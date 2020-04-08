@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import dao.ResultDAO;
 import dto.ResultDTO;
 
+
 @WebServlet("/play")
 public class PlayHAB extends HttpServlet {
 	// 乱数を取得する
