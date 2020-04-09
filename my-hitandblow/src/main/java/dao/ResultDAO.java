@@ -1,11 +1,12 @@
 package dao;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import dto.ResultDTO;
 
-public class ResultDAO {
+public class ResultDAO implements Serializable {
 	private List<ResultDTO> resultList = new ArrayList<>();	// 登録ユーザ情報リスト
 
 	// 書き込み内容リストの getter

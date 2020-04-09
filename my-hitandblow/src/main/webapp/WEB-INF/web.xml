@@ -10,8 +10,68 @@
   	<description></description>
   	<servlet-class>controller.HelloServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<servlet-name>PlayHAB</servlet-name>
+  	<display-name>PlayHAB</display-name>
+  	<description></description>
+  	<servlet-class>controller.PlayHAB</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>Answer</servlet-name>
+  	<display-name>Answer</display-name>
+  	<description></description>
+  	<servlet-class>controller.Answer</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>Input</servlet-name>
+  	<display-name>Input</display-name>
+  	<description></description>
+  	<servlet-class>controller.Input</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>Count</servlet-name>
+  	<display-name>Count</display-name>
+  	<description></description>
+  	<servlet-class>controller.Count</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>ResultDAO</servlet-name>
+  	<display-name>ResultDAO</display-name>
+  	<description></description>
+  	<servlet-class>dao.ResultDAO</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>ResultDTO</servlet-name>
+  	<display-name>ResultDTO</display-name>
+  	<description></description>
+  	<servlet-class>dto.ResultDTO</servlet-class>
+  </servlet>
   <servlet-mapping>
   	<servlet-name>HelloServlet</servlet-name>
   	<url-pattern>/HelloServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>PlayHAB</servlet-name>
+  	<url-pattern>/play</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>Answer</servlet-name>
+  	<url-pattern>/Answer</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>Input</servlet-name>
+  	<url-pattern>/Input</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>Count</servlet-name>
+  	<url-pattern>/Count</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ResultDAO</servlet-name>
+  	<url-pattern>/ResultDAO</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ResultDTO</servlet-name>
+  	<url-pattern>/ResultDTO</url-pattern>
   </servlet-mapping>
 </web-app>

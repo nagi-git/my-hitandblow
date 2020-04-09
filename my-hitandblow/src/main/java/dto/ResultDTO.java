@@ -1,7 +1,9 @@
 package dto;
 
+import java.io.Serializable;
+
 //書き込み内容を保持するクラス
-public class ResultDTO {
+public class ResultDTO implements Serializable {
 	private int turnCount;	// 回数
 	private String inputAnswer;		// 入力した回答
 	private int hitCount;		// ヒット数
