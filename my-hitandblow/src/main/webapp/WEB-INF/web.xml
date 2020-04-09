@@ -52,7 +52,7 @@
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>PlayHAB</servlet-name>
-  	<url-pattern>/play</url-pattern>
+  	<url-pattern>/PlayHAB</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>Answer</servlet-name>

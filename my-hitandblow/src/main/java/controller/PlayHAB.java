@@ -39,6 +39,7 @@ public class PlayHAB extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		// 送信したinputAnswerの取得
 		String inputAnswer = request.getParameter("result");
+
 		RequestDispatcher dispatcher;
 
 		// セッションオブジェクトの取得
@@ -46,7 +47,10 @@ public class PlayHAB extends HttpServlet {
 
 		// 送信したinputAnswerの取得
 		int[] arrayinputAnswer = Input.inputAnswer(inputAnswer);
-
+		if (Count.countHit(correctAnswer, arrayinputAnswer) == 4) {
+			correctAnswer = Answer.createCorrectAnswer();
+			dbm = new ResultDAO();
+		}
 
 		turnCount++;
 
