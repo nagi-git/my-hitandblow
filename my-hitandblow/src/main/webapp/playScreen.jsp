@@ -25,6 +25,7 @@
 				</div>
 				<div class="offset-2 col-10">
 					<button type="submit" class="btn btn-primary">登録</button>
+					<button class="btn btn-success" type="submit" name="resetBtn" id="reset" value="run">リセット</button>
 				</div>
 			</div>
 		</form>
@@ -51,11 +52,6 @@
 					</tr>
 				</c:forEach>
 			</table>
-			<form action="./play" method="post">
-				<div class="reset btn offset-2 col-10">
-					<button class="btn btn-success" type="submit" name="resetBtn" id="reset" value="run">リセット</button>
-				</div>
-			</form>
 		</div>
 	</c:if>
 </body>
