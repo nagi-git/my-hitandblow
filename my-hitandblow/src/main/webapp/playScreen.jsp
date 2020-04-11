@@ -21,7 +21,7 @@
 			<div class="form-group row">
 				<label class="col-2 col-form-lebel">答え</label>
 				<div class="col-10">
-					<input type="text" class="form-control" name="result">
+					<input type="text" class="form-control" name="result" />
 				</div>
 				<div class="offset-2 col-10">
 					<button type="submit" class="btn btn-primary">登録</button>

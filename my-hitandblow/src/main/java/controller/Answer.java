@@ -14,23 +14,22 @@ public class Answer {
 	 * @return correctAnswerNum 正解の数字
 	 */
 	public static int[] createCorrectAnswer() {
-        // 乱数を入れるための配列
-    	int[] correctAnswerNum = new int[4];
+		// 乱数を入れるための配列
+		int[] correctAnswerNum = new int[4];
 
-    	List<Integer> list = new ArrayList<>();
-    	for(int i = 0 ; i < 10 ; i++) {
-            list.add(i);
-        }
+		List<Integer> list = new ArrayList<>();
+		for (int i = 0; i < 10; i++) {
+			list.add(i);
+		}
 
-    	// シャッフルして、順番を変える
-    	Collections.shuffle(list);
+		// シャッフルして、順番を変える
+		Collections.shuffle(list);
 
-        //4つ取り出しcorrectAnswerNum配列に入れる
-        for(int i = 0; i < correctAnswerNum.length; i++){
-        	correctAnswerNum[i] = list.get(i);
-        }
-        return correctAnswerNum;
+		//4つ取り出しcorrectAnswerNum配列に入れる
+		for (int i = 0; i < correctAnswerNum.length; i++) {
+			correctAnswerNum[i] = list.get(i);
+		}
+		return correctAnswerNum;
 	}
 
 }
-
