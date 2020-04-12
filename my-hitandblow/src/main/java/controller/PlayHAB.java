@@ -38,31 +38,31 @@ public class PlayHAB extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String resetBtn = request.getParameter("resetBtn");
-		String inputAnswer = null;
+		// 送信したinputAnswerの取得
+		String inputAnswer = request.getParameter("result");
+		// 送信したinputAnswerに対するエラーコード(errorCode)の取得
+		String errorCode = Error.errorIndicate(inputAnswer);
 
 		if ("run".equals(resetBtn)) {
 			turnCount = 0;
 			correctAnswer = Answer.createCorrectAnswer();
 			dao = new ResultDAO();
 
-		} else {
-			// 送信したinputAnswerの取得
-			inputAnswer = request.getParameter("result");
+			} else {
+				// 送信したinputAnswerの取得
+				int[] arrayinputAnswer = Input.inputAnswer(inputAnswer);
 
-			// 送信したinputAnswerの取得
-			int[] arrayinputAnswer = Input.inputAnswer(inputAnswer);
+				// 回数を1ずつ増やす
+				turnCount++;
 
-			// 回数を1ずつ増やす
-			turnCount++;
+				// ヒットの数を取得する
+				int hitCount = Count.countHit(correctAnswer, arrayinputAnswer);
+				// ブロウの数を取得する
+				int blowCount = Count.countBlow(correctAnswer, arrayinputAnswer);
 
-			// ヒットの数を取得する
-			int hitCount = Count.countHit(correctAnswer, arrayinputAnswer);
-			// ブロウの数を取得する
-			int blowCount = Count.countBlow(correctAnswer, arrayinputAnswer);
-
-			// セッションに値を保存
-			dao.setWriting(turnCount, inputAnswer, hitCount, blowCount);
-		}
+				// セッションに値を保存
+				dao.setWriting(turnCount, inputAnswer, hitCount, blowCount);
+			}
 
 		// 書き込み内容追加後のリストを取得
 		List<ResultDTO> list = dao.getResultList();
@@ -72,6 +72,7 @@ public class PlayHAB extends HttpServlet {
 
 		// リストをセッションに保存
 		session.setAttribute("results", list);
+		session.setAttribute("errorCode", errorCode);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("playScreen.jsp");
 		dispatcher.forward(request, response);

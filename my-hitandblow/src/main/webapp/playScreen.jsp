@@ -23,6 +23,11 @@
 		<p>【例】<br/>入力：1234　正解：3248の場合<br/>HIT数→1[2]　BLOW数→2[3,4]</p>
 	</div>
 	<div>
+	<c:if test="${errorCode == 1}">
+		<div class="alert alert-info" role="alert">
+			半角数字4桁を入力してください！
+		</div>
+	</c:if>
 		<form action="./play" method="post">
 			<div class="form-group row">
 				<label class="col-2 col-form-lebel">答え</label>
