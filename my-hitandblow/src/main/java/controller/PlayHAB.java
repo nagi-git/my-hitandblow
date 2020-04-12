@@ -47,7 +47,11 @@ public class PlayHAB extends HttpServlet {
 			turnCount = 0;
 			correctAnswer = Answer.createCorrectAnswer();
 			dao = new ResultDAO();
+			} else if(errorCode == "1"||errorCode == "2") {
+				request.setAttribute("errorCode", errorCode);
 
+				RequestDispatcher dispatcher = request.getRequestDispatcher("playScreen.jsp");
+				dispatcher.forward(request, response);
 			} else {
 				// 送信したinputAnswerの取得
 				int[] arrayinputAnswer = Input.inputAnswer(inputAnswer);
@@ -72,7 +76,6 @@ public class PlayHAB extends HttpServlet {
 
 		// リストをセッションに保存
 		session.setAttribute("results", list);
-		session.setAttribute("errorCode", errorCode);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("playScreen.jsp");
 		dispatcher.forward(request, response);
