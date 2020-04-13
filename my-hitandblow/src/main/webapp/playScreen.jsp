@@ -17,11 +17,12 @@
 <body>
 	<h2>ヒット＆ブロー</h2>
 	<div class="container">
-		<p>4桁の数字を当てるゲームです。</p>
-		<p>答えの欄に数字を4桁入力すると、HIT（数字も場所も正解）の数、BLOW（数字は正解だが場所が違う）の数が表記されるので、その結果をもとに正しい数字を当ててください！
-		<br/>使われる数字は0～9で、同じ数字が複数存在することはありません。</p>
-		<p>【例】<br/>入力：1234　正解：3248の場合<br/>HIT数→1[2]　BLOW数→2[3,4]</p>
-	</div>
+		<div>
+			<p>4桁の数字を当てるゲームです。</p>
+			<p>答えの欄に数字を4桁入力すると、HIT（数字も場所も正解）の数、BLOW（数字は正解だが場所が違う）の数が表記されるので、その結果をもとに正しい数字を当ててください！
+			<br/>使われる数字は0～9で、同じ数字が複数存在することはありません。</p>
+			<p>【例】<br/>入力：1234、正解：3248の場合<br/>HIT数→1[2]　BLOW数→2[3,4]</p>
+		</div>
 	<div>
 	<c:if test="${errorCode == 1}">
 		<div class="alert alert-info" role="alert">
@@ -37,7 +38,7 @@
 	</c:if>
 		<form action="./play" method="post">
 			<div class="form-group row">
-				<label class="col-2 col-form-lebel">答え</label>
+				<label class="col-2 col-form-lebel">答え(半角数字4桁)</label>
 				<div class="col-10">
 					<input type="text" class="form-control" name="result" />
 				</div>
@@ -72,6 +73,7 @@
 			</table>
 		</div>
 	</c:if>
+	</div>
 	<!-- Optional JavaScript -->
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
