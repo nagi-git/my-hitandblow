@@ -37,21 +37,23 @@ public class PlayHAB extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+
+		String rowCount = request.getParameter("count");
 		String resetBtn = request.getParameter("resetBtn");
 		// 送信したinputAnswerの取得
 		String inputAnswer = request.getParameter("result");
 		// 送信したinputAnswerに対するエラーコード(errorCode)の取得
 		String errorCode = Error.errorIndicate(inputAnswer);
 
-		if ("run".equals(resetBtn)) {
-			turnCount = 0;
-			correctAnswer = Answer.createCorrectAnswer();
-			dao = new ResultDAO();
-			} else if(errorCode == "1"||errorCode == "2") {
+		if (String.valueOf(this.turnCount).equals(rowCount)) {
+			if ("run".equals(resetBtn)) {
+				turnCount = 0;
+				correctAnswer = Answer.createCorrectAnswer();
+				dao = new ResultDAO();
+			} else if(!"0".equals(errorCode)) {
 				request.setAttribute("errorCode", errorCode);
 
-				RequestDispatcher dispatcher = request.getRequestDispatcher("playScreen.jsp");
-				dispatcher.forward(request, response);
+				// NOTE エラーメッセージは画面に埋め込んでいるため、エラーコードのみセット
 			} else {
 				// 送信したinputAnswerの取得
 				int[] arrayinputAnswer = Input.inputAnswer(inputAnswer);
@@ -67,6 +69,7 @@ public class PlayHAB extends HttpServlet {
 				// セッションに値を保存
 				dao.setWriting(turnCount, inputAnswer, hitCount, blowCount);
 			}
+		}
 
 		// 書き込み内容追加後のリストを取得
 		List<ResultDTO> list = dao.getResultList();
