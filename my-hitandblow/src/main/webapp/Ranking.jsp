@@ -41,11 +41,11 @@
 			<div class="form-group row">
 				<label class="col-2 col-form-lebel">答え(半角数字4桁)</label>
 				<div class="col-10">
-					<input type="text" class="form-control" name="inputAnswer" />
+					<input type="text" class="form-control" name="result" />
 				</div>
 				<div class="offset-2 col-10">
 					<button type="submit" class="btn btn-primary">登録</button>
-					<button class="btn btn-success" type="submit" name="resetBtn" id="reset" value="run">リセット</button>
+					<button class="btn btn-success" type="submit" name="resetBtn" id="inputAnswer" value="run">リセット</button>
 				</div>
 				<c:if test="${results != null}">
 					<input type="hidden" class="form-control" name="count" value="${ fn:length(results) }" />

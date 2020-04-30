@@ -38,10 +38,12 @@ public class PlayHAB extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 
+
 		String rowCount = request.getParameter("count");
+		// リセットボタンのパラメーター値
 		String resetBtn = request.getParameter("resetBtn");
 		// 送信したinputAnswerの取得
-		String inputAnswer = request.getParameter("result");
+		String inputAnswer = request.getParameter("inputAnswer");
 		// 送信したinputAnswerに対するエラーコード(errorCode)の取得
 		String errorCode = Error.errorIndicate(inputAnswer);
 
@@ -50,10 +52,10 @@ public class PlayHAB extends HttpServlet {
 				turnCount = 0;
 				correctAnswer = Answer.createCorrectAnswer();
 				dao = new ResultDAO();
+			// @NOTE エラーメッセージは画面に埋め込んでいるため、エラーコードのみセット
 			} else if(!"0".equals(errorCode)) {
 				request.setAttribute("errorCode", errorCode);
 
-				// NOTE エラーメッセージは画面に埋め込んでいるため、エラーコードのみセット
 			} else {
 				// 送信したinputAnswerの取得
 				int[] arrayinputAnswer = Input.inputAnswer(inputAnswer);
