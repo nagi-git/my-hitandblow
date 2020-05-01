@@ -15,8 +15,8 @@ import dao.ResultDAO;
 import dto.ResultDTO;
 
 
-@WebServlet("/play")
-public class PlayHAB extends HttpServlet {
+@WebServlet("/hitandblow")
+public class ControllerHAB2 extends HttpServlet {
 	// 乱数を取得する
 	int[] correctAnswer = Answer.createCorrectAnswer();
 

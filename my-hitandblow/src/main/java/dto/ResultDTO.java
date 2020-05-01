@@ -9,9 +9,6 @@ public class ResultDTO implements Serializable {
 	private int hitCount;		// ヒット数
 	private int blowCount;		// ブロー数
 
-	public ResultDTO() {
-
-	}
 
 	public ResultDTO(int turnCount, String inputAnswer, int hitCount, int blowCount) {
 		this.turnCount = turnCount;
@@ -20,9 +17,8 @@ public class ResultDTO implements Serializable {
 		this.blowCount = blowCount;
 	}
 
-	// 各メンバ変数の getter および setter
-	public int getTurnCount() {
-		return turnCount;
+	public ResultDTO() {
+
 	}
 
 	public void setTurnCount(int turnCount) {
