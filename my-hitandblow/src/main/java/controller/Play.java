@@ -1,20 +1,15 @@
 package controller;
 
-import java.util.List;
-
-import dto.ResultDTO;
-
 /**
  * 正解を作るクラス
  */
 public class Play {
 
-	List<ResultDTO> list;
-	int[] arrayinputAnswer;
-	int[] correctAnswer;
-	int hitCount;
-	int blowCount;
-	int turnCount;
+	static int[] arrayinputAnswer;
+	static int[] correctAnswer;
+	static int hitCount;
+	static int blowCount;
+	static int turnCount;
 
 	/**
 	 * コンストラクタ
@@ -25,40 +20,46 @@ public class Play {
 	 * @param turnCount
 	 */
 	public Play(int[] arrayinputAnswer, int[] correctAnswer, int hitCount, int blowCount, int turnCount) {
-		this.arrayinputAnswer = arrayinputAnswer;
-		this.correctAnswer = correctAnswer;
-		this.hitCount = hitCount;
-		this.blowCount = blowCount;
-		this.turnCount = 0;
-	}
-
-	public static void playHAB(int[] arrayinputAnswer, int[] correctAnswer, int hitCount) {
-		for(int i = 1; !isFinished(hitCount); i++) {
-			this.arrayinputAnswer = Input.inputAnswer(inputAnswer);
-		}
+		Play.arrayinputAnswer = getInputAnswer(inputAnswer, correctAnswer);
+		Play.correctAnswer = correctAnswer;
+		Play.hitCount = hitCount;
+		Play.blowCount = blowCount;
+		Play.turnCount = 0;
 	}
 
 	/**
 	 * ヒットアンドブローを実行する
-	 * @return correctAnswer 正解の数字
+	 * @param inputAnswer
+	 * @param correctAnswer
+	 * @param hitCount
 	 */
-	public static int countHitCount(int[] arrayinputAnswer, int[] correctAnswer, int hitCount) {
+	public static int[] getInputAnswer(String inputAnswer, int[] correctAnswer) {
+
+		arrayinputAnswer = Input.inputAnswer(inputAnswer);
+
+		return arrayinputAnswer;
+	}
+
+	/**
+	 * hit数を数える
+	 * @param arrayinputAnswer
+	 * @param correctAnswer
+	 * @return hitCount
+	 */
+	public static int getHitCount(int[] arrayinputAnswer, int[] correctAnswer) {
 
 		// ヒットの数を取得する
 		hitCount = Count.countHit(correctAnswer, arrayinputAnswer);
 
-		// ブロウの数を取得する
-		blowCount = Count.countBlow(correctAnswerNum, inputAnswerNum);
-
-
-		turnCount += 1;
-
+		return hitCount;
 	}
-	private static boolean isFinished(int hitCount) {
-		if (hitCount >= Constant.DIGIT_COUNT) {
-			return true;
-		} else {
-			return false;
-		}
+
+	public static int getBlowCount(int[] arrayinputAnswer, int[] correctAnswer) {
+
+		// ヒットの数を取得する
+		blowCount = Count.countHit(correctAnswer, arrayinputAnswer);
+
+		return blowCount;
 	}
+
 }

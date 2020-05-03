@@ -25,7 +25,7 @@ public class Answer {
 		// シャッフルして、順番を変える
 		Collections.shuffle(list);
 
-		//4つ取り出しcorrectAnswerNum配列に入れる
+		//4つ取り出しcorrectAnswer配列に入れる
 		for (int i = 0; i < correctAnswer.length; i++) {
 			correctAnswer[i] = list.get(i);
 		}

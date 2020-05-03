@@ -56,17 +56,10 @@ public class ControllerHAB extends HttpServlet {
 				request.setAttribute("errorCode", errorCode);
 
 			} else {
-				// 送信したinputAnswerの取得
-				int[] arrayinputAnswer = Input.inputAnswer(inputAnswer);
 
-				// 回数を1ずつ増やす
-				turnCount++;
+				Play.playHAB(inputAnswer, correctAnswer);
 
-				// ヒットの数を取得する
-				int hitCount = Count.countHit(correctAnswer, arrayinputAnswer);
-				// ブロウの数を取得する
-				int blowCount = Count.countBlow(correctAnswer, arrayinputAnswer);
-
+				int hitCount;
 				// セッションに値を保存
 				dao.setWriting(turnCount, inputAnswer, hitCount, blowCount);
 			}
